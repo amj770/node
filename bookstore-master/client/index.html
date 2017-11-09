@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Mahaweli</title>
+
+    <link rel="stylesheet" href="../public/bootstrapvalidatorMaster/vendor/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="../public/bootstrapvalidatorMaster/dist/css/bootstrapValidator.css"/>
+
+    <script type="text/javascript" src="../public/bootstrapvalidatorMaster/vendor/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="../public/bootstrapvalidatorMaster/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../public/bootstrapvalidatorMaster/dist/js/bootstrapValidator.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <!-- form: -->
+            <section>
+                <div class="page-header">
+                    <h1>Welcome to Mahaweli</h1>
+                </div>
+
+                <div class="col-lg-8 col-lg-offset-2">
+                    <form id="defaultForm" method="post" action="target.php" class="form-horizontal">
+                        <fieldset>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Name</label>
+                                <div class="col-lg-5">
+                                    <input type="text" class="form-control" name="name" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Address</label>
+                                <div class="col-lg-5">
+                                    <input type="text" class="form-control" name="address" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">NIC</label>
+                                <div class="col-lg-5">
+                                    <input type="text" class="form-control" name="nic" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Mobile number</label>
+                                <div class="col-lg-5">
+                                    <input type="text" class="form-control" name="mobileNumber" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Bank</label>
+                                <div class="col-lg-5">
+                                    <select class="form-control" name="bank">
+                                        <option value="">-- Select a Bank --</option>
+                                        <option value="hnb">Hatton National Bank</option>
+                                        <option value="ntb">Nation Trust Bank</option>
+                                        <option value="cb">Commercial Bank</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Account number</label>
+                                <div class="col-lg-5">
+                                    <input type="text" class="form-control" name="accountNumber" />
+                                </div>
+                            </div>
+
+                        </fieldset>
+
+                        <div class="form-group">
+                            <div class="col-lg-9 col-lg-offset-3">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+            <!-- :form -->
+        </div>
+    </div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#defaultForm').bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            name: {
+                message: 'The username is not valid',
+                validators: {
+                    notEmpty: {
+                        message: 'The username is required and can\'t be empty'
+                    },
+                    stringLength: {
+                        min: 6,
+                        max: 30,
+                        message: 'The username must be more than 6 and less than 30 characters long'
+                    },
+                    regexp: {
+                        regexp: /^[a-zA-Z]+$/,
+                        message: 'The username can only consist of alphabetical'
+                    }
+                }
+            },
+            address: {
+                message: 'The address is not valid',
+                validators: {
+                    notEmpty: {
+                        message: 'The address is required and can\'t be empty'
+                    },
+                    stringLength: {
+                        min: 6,
+                        max: 100,
+                        message: 'The address must be more than 6 and less than 100 characters long'
+                    }
+                }
+            },
+            nic: {
+                message: 'The nic is not valid',
+                validators: {
+                    notEmpty: {
+                        message: 'The nic is required and can\'t be empty'
+                    },
+                    regexp: {
+                        regexp: /^[0-9]{9}[x|X|v|V]$/,
+                        message: 'The nic is not valid'
+                    }
+                }
+            },
+            mobileNumber: {
+                message: 'The mobile number is not valid',
+                validators: {
+                    notEmpty: {
+                        message: 'The mobile number is required and can\'t be empty'
+                    },
+                    digits: {
+                        message: 'The mobile number can contain only digits'
+                    }
+                }
+            },
+            bank: {
+                validators: {
+                    notEmpty: {
+                        message: 'The bank is required and can\'t be empty'
+                    }
+                }
+            },
+            accountNumber: {
+                message: 'The account number is not valid',
+                validators: {
+                    notEmpty: {
+                        message: 'The account number is required and can\'t be empty'
+                    },
+                    digits: {
+                        message: 'The account number can contain only digits'
+                    }
+                }
+            }
+        }
+    });
+});
+</script>
+</body>
+</html>
